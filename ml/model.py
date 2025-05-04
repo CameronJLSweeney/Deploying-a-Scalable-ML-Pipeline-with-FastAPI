@@ -23,6 +23,7 @@ def train_model(X_train, y_train):
         Trained machine learning model.
     """
     # TODO: implement the function
+<<<<<<< HEAD
     param_grid = {
         'n_estimators': [100, 200],
         'max_depth': [None, 10, 20],
@@ -30,6 +31,16 @@ def train_model(X_train, y_train):
     clf = GridSearchCV(RandomForestClassifier(random_state=42), param_grid, cv=5)
     clf.fit(X_train, y_train)
     return clf.best_estimator_
+=======
+    def train_model(X_train, y_train):
+        param_grid = {
+            'n_estimators': [100, 200],
+            'max_depth': [None, 10, 20],
+        }
+        clf = GridSearchCV(RandomForestClassifier(random_state=42), param_grid, cv=5)
+        clf.fit(X_train, y_train)
+        return clf.best_estimator_
+>>>>>>> 1284665f3c8e6f6cabf1583d79deb51e287a9bf1
 
 
 def compute_model_metrics(y, preds):
