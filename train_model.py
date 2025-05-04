@@ -79,13 +79,14 @@ for col in cat_features:
     for slicevalue in sorted(test[col].unique()):
         count = test[test[col] == slicevalue].shape[0]
         p, r, fb = performance_on_categorical_slice(
-            model, # your code here
-            test, # use test, col and slicevalue as part of the input
+            test, # your code here
+            col, # use test, col and slicevalue as part of the input
+            slicevalue,
             cat_features,
             label="salary",
-            slice_column=slicevalue,
             encoder=encoder,
-            lb=lb
+            lb=lb,
+            model=model
         )
         with open("slice_output.txt", "a") as f:
             print(f"{col}: {slicevalue}, Count: {count:,}", file=f)
