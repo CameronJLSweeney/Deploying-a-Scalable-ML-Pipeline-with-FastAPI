@@ -1,7 +1,7 @@
 import os
-
+import pickle
 import pandas as pd
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
 import joblib
 
@@ -26,12 +26,19 @@ class Data(BaseModel):
     capital_loss: int = Field(..., example=0, alias="capital-loss")
     hours_per_week: int = Field(..., example=40, alias="hours-per-week")
     native_country: str = Field(..., example="United-States", alias="native-country")
+try:
+    encoder_path = os.path.join(os.getcwd(), "model", "encoder.pkl") # TODO: enter the path for the saved encoder 
+    encoder = load_model(encoder_path)
+    print("Encoder loaded successfully.")
 
-path = os.path.join(os.getcwd(), "model", "encoder.pkl") # TODO: enter the path for the saved encoder 
-encoder = load_model(path)
+    model_path = os.path.join(os.getcwd(), "model","model.pkl") # TODO: enter the path for the saved model 
+    model = load_model(model_path)
+    print("Model loaded successfully.")
 
-model_path = os.path.join(os.getcwd(), "model","model.pkl") # TODO: enter the path for the saved model 
-model = load_model(model_path)
+
+except Exception as e:
+    print(f"Error loading model, encoder, or label binarizer: {e}")
+    raise HTTPException(status_code=500,  detail=f"Error loading model, encoder, or label binarizer: {str(e)}")
 
 # TODO: create a RESTful API using FastAPI
 app = FastAPI() # your code here
@@ -41,7 +48,7 @@ app = FastAPI() # your code here
 async def get_root():
     """ Say hello!"""
     # your code here
-    return {"message": "Welcome to the Machine Learning Model API"}
+    return {"message": "Hello from the API!"}
 
 
 # TODO: create a POST on a different path that does model inference
@@ -68,7 +75,8 @@ async def post_inference(data: Data):
     data_processed, _, _, _ = process_data(
         data,
         categorical_features=cat_features,
-        training=False# your code here
+        training=False,# your code here
+        encoder=encoder
         # use data as data input
         # use training = False
         # do not need to pass lb as input

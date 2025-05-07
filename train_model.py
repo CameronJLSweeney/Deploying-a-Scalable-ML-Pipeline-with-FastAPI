@@ -59,6 +59,8 @@ model_path = os.path.join(project_path, "model", "model.pkl")
 save_model(model, model_path)
 encoder_path = os.path.join(project_path, "model", "encoder.pkl")
 save_model(encoder, encoder_path)
+lb_path = os.path.join(project_path, "model", "lb.pkl")
+save_model(lb, lb_path)
 
 # load the model
 model = load_model(
