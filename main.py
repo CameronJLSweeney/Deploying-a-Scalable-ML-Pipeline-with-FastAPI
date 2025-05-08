@@ -7,7 +7,7 @@ import joblib
 
 from ml.data import apply_label, process_data
 from ml.model import inference, load_model
-
+#test
 # DO NOT MODIFY
 class Data(BaseModel):
     age: int = Field(..., example=37)
