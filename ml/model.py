@@ -22,7 +22,7 @@ def train_model(X_train, y_train, cv=None):
     model
         Trained machine learning model.
     """
-    # TODO: implement the function
+    # Train and return a model
     if cv is None:
         cv = StratifiedKFold(n_splits=5)
     
@@ -73,7 +73,7 @@ def inference(model, X):
     preds : np.array
         Predictions from the model.
     """
-    # TODO: implement the function
+    # Run model inferences and return the predictions
     return model.predict(X)
 
 def save_model(model, path):
@@ -86,12 +86,12 @@ def save_model(model, path):
     path : str
         Path to save pickle file.
     """
-    # TODO: implement the function
+    # Save a model
     joblib.dump(model, path)
 
 def load_model(path):
     """ Loads pickle file from `path` and returns it."""
-    # TODO: implement the function
+    # Load a model
     return joblib.load(path)
 
 
@@ -131,7 +131,7 @@ def performance_on_categorical_slice(
     fbeta : float
 
     """
-    # TODO: implement the function
+    # Computes the metrics on a slice of the data
     data_slice = data[data[column_name]==slice_value]
     
     X_slice, y_slice, _, _ = process_data(
