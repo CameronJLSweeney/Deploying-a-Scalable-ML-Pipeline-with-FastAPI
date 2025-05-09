@@ -6,7 +6,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split, StratifiedKFold
 from ml.model import train_model, compute_model_metrics
 
-# TODO: implement the first test. Change the function name and input as needed
+# Implement the first test. Change the function name and input as needed
 def test_model_type():
     """
     # Test that train_model returns a RandomForestClassifier instance when trained on a simple dataset.
@@ -21,7 +21,7 @@ def test_model_type():
     assert isinstance(model, RandomForestClassifier), "Model is not a RandomForestClassifier"
 
 
-# TODO: implement the second test. Change the function name and input as needed
+# Implement the second test. Change the function name and input as needed
 def test_compute_model_metrics_values():
     """
     # Test that compute_model_metrics returns expected metric values (approximate).
@@ -36,7 +36,7 @@ def test_compute_model_metrics_values():
     
 
 
-# TODO: implement the third test. Change the function name and input as needed
+# Implement the third test. Change the function name and input as needed
 def test_training_input_shape():
     """
     # Test that train_model handles correct input shape and type.
