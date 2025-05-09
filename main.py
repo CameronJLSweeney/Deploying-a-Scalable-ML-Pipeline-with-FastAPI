@@ -7,7 +7,7 @@ import joblib
 
 from ml.data import apply_label, process_data
 from ml.model import inference, load_model
-#test
+
 # DO NOT MODIFY
 class Data(BaseModel):
     age: int = Field(..., example=37)
@@ -40,10 +40,10 @@ except Exception as e:
     print(f"Error loading model, encoder, or label binarizer: {e}")
     raise HTTPException(status_code=500,  detail=f"Error loading model, encoder, or label binarizer: {str(e)}")
 
-# TODO: create a RESTful API using FastAPI
+# Create a RESTful API using FastAPI
 app = FastAPI() # your code here
 
-# TODO: create a GET on the root giving a welcome message
+# Create a GET on the root giving a welcome message
 @app.get("/")
 async def get_root():
     """ Say hello!"""
@@ -51,7 +51,7 @@ async def get_root():
     return {"message": "Hello from the API!"}
 
 
-# TODO: create a POST on a different path that does model inference
+# Create a POST on a different path that does model inference
 @app.post("/predict")
 async def post_inference(data: Data):
     # DO NOT MODIFY: turn the Pydantic model into a dict.
@@ -82,5 +82,5 @@ async def post_inference(data: Data):
         # do not need to pass lb as input
     )
     _inference = model.predict(data_processed)
-    result = apply_label(_inference) # your code here to predict the result using data_processed
+    result = apply_label(_inference)
     return {"result": result}

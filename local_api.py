@@ -2,7 +2,7 @@ import json
 
 import requests
 
-# TODO: send a GET using the URL http://127.0.0.1:8000
+# Send a GET using the URL http://127.0.0.1:8000
 url="http://127.0.0.1:8000/predict" # Your code here
 
 r = requests.get("http://127.0.0.1:8000")
@@ -31,14 +31,14 @@ input_data = {
 }
 
 
-# TODO: send a POST using the data above
+# Send a POST using the data above
 response = requests.post(url, json=input_data) # Your code here
 
-# TODO: print the status code
+# Print the status code
 print("Status Code: {response.status_code}")
 
 print("Response text:", response.text)
-# TODO: print the result
+# Print the result
 if response.status_code == 200:
     print("Result:", response.json())
 else:
